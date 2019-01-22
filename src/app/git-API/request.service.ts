@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Users } from '../users';
 import { Repo } from '../repo';
+import {HttpClient} from '@angular/common/http';
+import{environment} from '../../environments/environment'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +12,66 @@ export class RequestService {
   repo:Repo;
   newRepo:any;
   searchRepo:any;
+  private searchName:"Fahari"
 
-  constructor() { }
+  constructor(private http:HttpClient) {
+    this.users = new Users ("","","","",0,0,new Date(),0);
+    // this.repo = new Repo("","","",new Date())
+  }
+
+    // updateUserName(username:string){
+    //   this.searchName =this.username
+    // }
+
+  findUser(searchName){
+  interface ApiResponse{
+  name:string;
+  login:string;
+  avatar_url:string;
+  html_url:string;
+  public_repos:number;
+  created_at:Date;
+  followers:number;
+  following:number;
+}
+let promise = new Promise((resolve,reject)=>{
+      this.http.get<ApiResponse>("https://api.github.com/users/"+searchName+"?access_token=dee4e10a13647810d0c760d3adf2127669a467df").toPromise().then(getResponse=>{
+        this.users.name = getResponse.name;
+        this.users.login = getResponse.login;
+        this.users.avatar_url = getResponse.avatar_url;
+        this.users.html_url = getResponse.html_url;
+        this.users.public_repos = getResponse.public_repos;
+        this.users.created_at = getResponse.created_at;
+        this.users.followers = getResponse.followers;
+        this.users.following = getResponse.following;
+        resolve();
+      },error=>{
+        console.log("Loading has Failed. Try Again later");
+
+        reject(error);
+      })
+    })
+return promise;
+}
+
+findRepo(searchName){
+  interface ApiResponse{
+        name:string;
+        html_url:string;
+        description:string;
+        created_at:Date;
+      }
+      let myPromise = new Promise((resolve,reject)=>{
+        this.http.get<ApiResponse>(environment.apiUrl+searchName+"/repos?order=created&sort=asc?access_token=dee4e10a13647810d0c760d3adf2127669a467df").toPromise().then(getRepoResponse=>{
+          this.newRepo = getRepoResponse;
+          resolve();
+        },error=>{
+          console.log("Loading has Failed. Try Again later");
+
+          reject(error);
+        })
+      })
+      return myPromise;
+}
+
 }
