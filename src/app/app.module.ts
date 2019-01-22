@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { GithubSearchComponent } from './github-search/github-search.component';
 import { NavComponent } from './nav/nav.component';
 import { FormComponent } from './form/form.component';
+import { GithubUsersComponent } from './github-users/github-users.component';
+import { GithubRepoComponent } from './github-repo/github-repo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GithubSearchComponent,
     NavComponent,
-    FormComponent
+    FormComponent,
+    GithubUsersComponent,
+    GithubRepoComponent
   ],
   imports: [
     BrowserModule,
