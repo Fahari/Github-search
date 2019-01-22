@@ -1,3 +1,6 @@
-#bttn{
-  left: 500px !important;
+.form-control{
+  padding: 10px;
+    border-radius: 5px;
+    width: 333px;
+  
 }

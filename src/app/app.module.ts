@@ -9,6 +9,12 @@ import { FormComponent } from './form/form.component';
 import { GithubUsersComponent } from './github-users/github-users.component';
 import { GithubRepoComponent } from './github-repo/github-repo.component';
 import {HttpClientModule} from '@angular/common/http'
+import { RouterModule, Routes } from '@angular/router';
+
+const routes:Routes=[
+  {path:"goals",component:GoalComponent},
+  {path:"about",component:AboutComponent}
+]
 
 @NgModule({
   declarations: [
@@ -17,7 +23,8 @@ import {HttpClientModule} from '@angular/common/http'
     NavComponent,
     FormComponent,
     GithubUsersComponent,
-    GithubRepoComponent
+    GithubRepoComponent,
+    RouterModule.forRoot(routes)
   ],
   imports: [
     BrowserModule,
