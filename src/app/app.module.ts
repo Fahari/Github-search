@@ -8,6 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { FormComponent } from './form/form.component';
 import { GithubUsersComponent } from './github-users/github-users.component';
 import { GithubRepoComponent } from './github-repo/github-repo.component';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GithubRepoComponent } from './github-repo/github-repo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
