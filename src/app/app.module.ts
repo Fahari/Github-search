@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,12 +10,7 @@ import { FormComponent } from './form/form.component';
 import { GithubUsersComponent } from './github-users/github-users.component';
 import { GithubRepoComponent } from './github-repo/github-repo.component';
 import {HttpClientModule} from '@angular/common/http'
-import { RouterModule, Routes } from '@angular/router';
 
-const routes:Routes=[
-  {path:"goals",component:GoalComponent},
-  {path:"about",component:AboutComponent}
-]
 
 @NgModule({
   declarations: [
@@ -24,12 +20,12 @@ const routes:Routes=[
     FormComponent,
     GithubUsersComponent,
     GithubRepoComponent,
-    RouterModule.forRoot(routes)
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
