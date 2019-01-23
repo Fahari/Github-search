@@ -16,7 +16,7 @@ searchRequest = new Search("");
 
   // find:string
   // user: Users;
-  lookFor(data){
+  submitSearch(data){
    // console.log(data.value.find);
    this.getName.emit(data.value.find);
    data.reset();

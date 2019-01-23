@@ -11,28 +11,28 @@
     </div>
     <div class="col-md-8">
       <div class="table1">
-        <h4>{{users.name}}</h4>
+        <h3>{{users.name}}</h3>
         <table>
           <tbody>
             <tr>
               <th scope='row'>Github User:</th>
-              <td><a href="{{users.html_url}}" target="_blank">{{users.login}}></a></td>
+              <td><a href="{{users.html_url}}" target="_blank">{{users.login}}</a></td>
             </tr>
             <tr>
               <th scope='row'>Number of Repos:</th>
-              <td><a href="{{users.public_repos}}"></a></td>
+              <td>{{users.public_repos}}</td>
             </tr>
             <tr>
               <th scope='row'>Followers:</th>
-              <td><a href="{{users.followers}}"></a></td>
+              <td>{{users.followers}}</td>
             </tr>
             <tr>
               <th scope='row'>Following:</th>
-              <td><a href="{{users.following}}"></a></td>
+              <td>{{users.following}}</td>
             </tr>
             <tr>
               <th scope='row'>Date Joined:</th>
-              <td><a href="{{users.created_at}}"></a></td>
+              <td>{{users.created_at}}</td>
             </tr>
           </tbody>
         </table>
@@ -50,9 +50,9 @@
           <tbody>
             <tr>
               <td>
-                <a href="#"></a><br>
-                <p>Details: </p><br>
-                <p>Date Joined: </p>
+                <a href="{{repository.html_url}}">{{repository.name}}</a><br>
+                <p>Details: {{repository.description}}</p><br>
+                <p>Date Joined: {{repository.created_at}}</p>
               </td>
             </tr>
           </tbody>

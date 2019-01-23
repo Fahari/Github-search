@@ -3,6 +3,9 @@ import { Users } from '../users';
 import { Repo } from '../repo';
 import {HttpClient} from '@angular/common/http';
 import{environment} from '../../environments/environment'
+import { resolve } from 'url';
+import { reject } from 'q';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,7 @@ export class RequestService {
   repo:Repo;
   newRepo:any;
   searchRepo:any;
-  private searchName:"Fahari"
+  // private searchName:"Fahari"
 
   constructor(private http:HttpClient) {
     this.users = new Users ("","","","",0,0,new Date(),0);
@@ -54,7 +57,7 @@ let promise = new Promise((resolve,reject)=>{
 return promise;
 }
 
-findRepo(searchName){
+getUserRepo(searchName){
   interface ApiResponse{
         name:string;
         html_url:string;
@@ -74,4 +77,20 @@ findRepo(searchName){
       return myPromise;
 }
 
+findRepo(searchName,toShow){
+    interface ApiResponse{
+      items:any;
+    }
+    let promise = new Promise((resolve,reject)=>{
+      this.http.get<ApiResponse>("https://api.github.com/search/repositories?q="+searchName+"&per_page="+toShow+"&sort=forks&order=asc?access_token=dee4e10a13647810d0c760d3adf2127669a467df").toPromise().then(getRepoResponse=>{
+        this.searchRepo = getRepoResponse.items;
+        resolve();
+      },error=>{
+        this.searchRepo = "Type above to make a search request"
+        console.log("Loading has Failed. Try Again later");
+        reject(error);
+      })
+    })
+    return promise;
+  }
 }
