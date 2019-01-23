@@ -19,7 +19,7 @@ export class RequestService {
 
   constructor(private http:HttpClient) {
     this.users = new Users ("","","","",0,0,new Date(),0);
-    this.repo = new Repo("","","",new Date())
+    // this.repo = new Repo("","","",new Date())
   }
 
     // updateUserName(username:string){
@@ -65,7 +65,7 @@ getUserRepo(searchName){
         created_at:Date;
       }
       let myPromise = new Promise((resolve,reject)=>{
-        this.http.get<ApiResponse>(environment.apiUrl+searchName+"/repos?order=created&sort=asc?access_token=dee4e10a13647810d0c760d3adf2127669a467df").toPromise().then(getRepoResponse=>{
+        this.http.get<ApiResponse>("https://api.github.com/users/"+searchName+"/repos?order=created&sort=asc?access_token=dee4e10a13647810d0c760d3adf2127669a467df").toPromise().then(getRepoResponse=>{
           this.newRepo = getRepoResponse;
           resolve();
         },error=>{
