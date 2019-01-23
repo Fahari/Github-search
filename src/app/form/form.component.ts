@@ -17,7 +17,6 @@ searchRequest = new Search("");
   // find:string
   // user: Users;
   submitSearch(data){
-   // console.log(data.value.find);
    this.getName.emit(data.value.find);
    data.reset();
  }

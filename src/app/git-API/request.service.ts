@@ -19,7 +19,7 @@ export class RequestService {
 
   constructor(private http:HttpClient) {
     this.users = new Users ("","","","",0,0,new Date(),0);
-    // this.repo = new Repo("","","",new Date())
+    this.repo = new Repo("","","",new Date())
   }
 
     // updateUserName(username:string){
