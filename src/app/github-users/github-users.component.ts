@@ -19,7 +19,7 @@ searchUser(name){
    this.newName='';
    for(var i=0;i<name.length;i++){
      if(name.charAt(i)===" "||name.charAt(i)==="?"||name.charAt(i)==="/"){
-     alert(`Invalid username. Username should not have spaces`);
+     alert(`Username should not contain spaces`);
      this.newName = 'Fahari';
      break;
      }else if(name.charAt(i)!==" "||name.charAt(i)!=="?"||name.charAt(i)!=="/"){
