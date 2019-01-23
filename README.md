@@ -1,7 +1,7 @@
 # GithubSearch
 
 #### Github-search is a web app that enables a user to search for any Github user and any Github repository.
-11/January/2019
+23/January/2019
 
 ### Author  **Kironji Kevin**
 
